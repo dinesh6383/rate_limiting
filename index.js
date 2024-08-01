@@ -159,7 +159,7 @@ const sendResponse = (pathname, response, request_info) => {
       break;
     default:
       response.statusCode = 404;
-      request_info.status_code = 200;
+      request_info.status_code = 404;
       response.end("404 - Page not found!");
   }
 };
@@ -177,12 +177,14 @@ server.listen(8000, () => {
         request_time : 00:00:00,
         request_count : 0
         isBlocked : boolean.
+        request_difference : 0
     }
 
     request_date : stores the last requested date.
     request_time : stores the last requested time.
     request_count : stores the number of request user made.
     isBlocked : determines the user is in block or not.
+    request_difference : store the times difference in seconds between prev request and curr request.
 
     Overview on block
     1. If the ip is not in map add them to the map and assign the request count as 1.
